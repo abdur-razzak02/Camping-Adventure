@@ -1,7 +1,7 @@
 import logo from "../assets/logo.png";
 const Footer = () => {
   return (
-    <div className="bg-base-200">
+    <div className="bg-base-100">
       <footer className="footer text-base-content py-10 w-11/12 mx-auto grid sm:grid-cols-5 gap-5">
         <aside className="sm:col-span-2 mb-5 sm:mb-0">
           <img src={logo} alt="logo" className="w-28" />

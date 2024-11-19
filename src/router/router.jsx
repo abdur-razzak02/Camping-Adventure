@@ -4,7 +4,8 @@ import HomeLayout from "../layouts/HomeLayout";
 const router = createBrowserRouter([
     {
       path: "/",
-      element: <HomeLayout></HomeLayout>,
+    element: <HomeLayout></HomeLayout>,
+    
     },
     {
         path: '*',
