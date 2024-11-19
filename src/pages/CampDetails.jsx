@@ -23,10 +23,9 @@ const CampDetails = () => {
 
   return (
     <div className="min-h-[calc(100vh-308px)] bg-slate-100 py-10 lg:py-20 ">
-      <div className="w-11/12 mx-auto flex justify-between gap-10">
-        <div className="w-1/2">
+      <div className="w-11/12 mx-auto grid sm:grid-cols-2 gap-5 sm:gap-10">
+        <div className="space-y-1 lg:space-y-0">
           <img src={Image} alt="camp image" className="rounded-lg mb-3" />
-
           <p className="text-lg font-semibold font-play">
             Eco Friendly Features
           </p>
@@ -45,7 +44,7 @@ const CampDetails = () => {
           </h3>
         </div>
 
-        <div className="w-1/2 space-y-2 text-lg">
+        <div className="space-y-1 sm:space-y-2">
           <h1 className="text-3xl font-semibold font-play">{adventureTitle}</h1>
           <p>Short description: {shortDescription}</p>
           <h2>
@@ -86,9 +85,14 @@ const CampDetails = () => {
           </p>
         </div>
       </div>
-      <button to='https://meet.google.com/landing' className="text-center px-5 py-2 bg-theme text-white rounded-lg w-40 mx-auto mt-10">
-        Talk with Expert
-      </button>
+      <div className="w-full text-center mt-10">
+        <a
+          href="https://meet.google.com/landing" target="_blank"
+          className="px-5 py-2 bg-theme text-white rounded-lg w-40"
+        >
+          Talk with Expert
+        </a>
+      </div>
     </div>
   );
 };

@@ -114,9 +114,9 @@ const Navbar = () => {
       </div>
 
       <div className="dropdown dropdown-end navbar-end flex ">
-        <h1 className="px-4 py-1 rounded mr-2 font-semibold bg-theme text-white">
-          Logout
-        </h1>
+        <Link to={'/login'} className="px-4 py-1 rounded mr-2 font-semibold bg-theme text-white">
+          Login
+        </Link>
         <div
           tabIndex={0}
           role="button"
