@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <div className="navbar bg-base-100 p-0">
+    <div className="navbar w-11/12 mx-auto p-0 ">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="mr-2 lg:hidden">
@@ -105,6 +105,7 @@ const Navbar = () => {
       </div>
 
       <div className="dropdown dropdown-end navbar-end flex ">
+      <h1 className="px-4 py-1 rounded mr-2 font-semibold bg-theme text-white">Logout</h1>
         <div
           tabIndex={0}
           role="button"
@@ -119,10 +120,13 @@ const Navbar = () => {
         </div>
         <ul
           tabIndex={0}
-          className="menu menu-sm dropdown-content top-10 bg-base-100 rounded-box z-[1] mt-3 w-40 p-3 shadow"
+          className="menu menu-sm dropdown-content top-10 bg-base-100 rounded-lg space-y-1 z-[1] mt-3 w-40 p-3 shadow"
         >
           <li>
             <a className="justify-between">Profile</a>
+          </li>
+          <li>
+            <a className="justify-between">Update Profile</a>
           </li>
           <li>
             <a>Settings</a>
@@ -131,6 +135,7 @@ const Navbar = () => {
             <a>Logout</a>
           </li>
         </ul>
+        
       </div>
     </div>
   );
