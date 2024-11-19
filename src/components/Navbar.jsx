@@ -62,7 +62,7 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <img src={logo} alt="logo" className="w-10 mr-1" />
+        <Link to={'/'}><img src={logo} alt="logo" className="w-10 mr-1" /></Link>
         <Link to={'/'} className="text-xl font-semibold hidden sm:inline font-play">Camping Adventure</Link>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -131,7 +131,7 @@ const Navbar = () => {
           <li>
             <a>Settings</a>
           </li>
-          <li>
+          <li className="text-red-600">
             <a>Logout</a>
           </li>
         </ul>
