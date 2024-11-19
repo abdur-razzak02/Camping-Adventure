@@ -1,5 +1,7 @@
 import logo from "../assets/logo.png";
 import { Link, NavLink } from "react-router-dom";
+import { FaUser, FaUserPen, FaArrowRightFromBracket } from "react-icons/fa6";
+import { IoSettingsSharp } from "react-icons/io5";
 
 const Navbar = () => {
   return (
@@ -62,8 +64,15 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <Link to={'/'}><img src={logo} alt="logo" className="w-10 mr-1" /></Link>
-        <Link to={'/'} className="text-xl font-semibold hidden sm:inline font-play">Camping Adventure</Link>
+        <Link to={"/"}>
+          <img src={logo} alt="logo" className="w-10 mr-1 lg:mr-2" />
+        </Link>
+        <Link
+          to={"/"}
+          className="text-xl font-semibold hidden sm:inline font-play"
+        >
+          Camping Adventure
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -105,7 +114,9 @@ const Navbar = () => {
       </div>
 
       <div className="dropdown dropdown-end navbar-end flex ">
-      <h1 className="px-4 py-1 rounded mr-2 font-semibold bg-theme text-white">Logout</h1>
+        <h1 className="px-4 py-1 rounded mr-2 font-semibold bg-theme text-white">
+          Logout
+        </h1>
         <div
           tabIndex={0}
           role="button"
@@ -120,22 +131,29 @@ const Navbar = () => {
         </div>
         <ul
           tabIndex={0}
-          className="menu menu-sm dropdown-content top-10 bg-base-100 rounded-lg space-y-1 z-[1] mt-3 w-40 p-3 shadow"
+          className="menu menu-sm dropdown-content top-10 bg-base-100 rounded-lg space-y-1 z-[1] mt-3 w-44 p-2 shadow"
         >
           <li>
-            <a className="justify-between">Profile</a>
+            <a>
+              <FaUser /> Profile
+            </a>
           </li>
           <li>
-            <a className="justify-between">Update Profile</a>
+            <a>
+              <FaUserPen /> Update Profile
+            </a>
           </li>
           <li>
-            <a>Settings</a>
+            <a>
+              <IoSettingsSharp /> Settings
+            </a>
           </li>
-          <li className="text-red-600">
-            <a>Logout</a>
+          <li className="text-red-600 ">
+            <a>
+              <FaArrowRightFromBracket /> Logout
+            </a>
           </li>
         </ul>
-        
       </div>
     </div>
   );

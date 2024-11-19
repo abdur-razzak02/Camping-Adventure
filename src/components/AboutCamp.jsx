@@ -1,9 +1,9 @@
 const AboutCamp = () => {
   return (
-    <div className="bg-slate-100 sm:pt-10">
-      <div className="grid sm:grid-cols-2 gap-10 lg:gap-20 w-11/12 sm:w-10/12 mx-auto py-10 ">
+    <div className="bg-base-100">
+      <div className="grid sm:grid-cols-2 gap-10 lg:gap-20 w-11/12 sm:w-10/12 mx-auto py-10 lg:py-16">
         <div className="flex flex-col justify-center items-start">
-          <h1 className="text-3xl sm:text-4xl font-semibold font-play mb-3">
+          <h1 className="text-3xl sm:text-4xl xl:text-6xl font-semibold font-play mb-3 xl:pr-20">
             About the Adventure Camp
           </h1>
           <p className="text-gray-500 mb-10">

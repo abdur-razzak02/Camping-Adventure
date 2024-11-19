@@ -3,6 +3,7 @@ import HomeLayout from "../layouts/HomeLayout";
 import PackageContainer from "../components/PackageContainer";
 import Blog from "../pages/Blog";
 import Gallery from "../pages/Gallery";
+import CampDetails from "../pages/CampDetails";
 
 const router = createBrowserRouter([
   {
@@ -12,9 +13,13 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <PackageContainer></PackageContainer>,
-        loader: () => fetch("campingPackagesData.json"),
+        loader: () => fetch("/campingPackagesData.json"),
       },
-
+      {
+        path: '/camp/:ID',
+        element: <CampDetails></CampDetails>,
+        loader: () => fetch("/campingPackagesData.json")
+      },
       {
         path: "blog",
         element: <Blog></Blog>,

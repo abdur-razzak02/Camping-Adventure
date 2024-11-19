@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 
+import { Link } from "react-router-dom";
+
 const Packages = ({ allPackages }) => {
   const { adventureTitle, Image, ecoFriendly_Features } = allPackages;
 
@@ -15,7 +17,7 @@ const Packages = ({ allPackages }) => {
             <img
               src={Image}
               alt="camp packege"
-              className="object-cover rounded-lg sm:h-40 md:h-48 xl:h-56 hover:scale-110 transition duration-1000 ease-in-out"
+              className="object-cover rounded-lg sm:h-40 md:h-48 xl:h-56 hover:scale-110 transition duration-1000 ease-in-out w-full" 
             />
           </div>
         </figure>
@@ -27,9 +29,9 @@ const Packages = ({ allPackages }) => {
             </h1>
           ))}
           <div className="card-actions mt-3">
-            <button className="border border-theme py-1 px-4 rounded-md hover:bg-theme hover:text-white transition duration-300 ease-in-out">
+            <Link to={`/camp/${allPackages.ID}`} className="border border-theme py-1 px-4 rounded-md hover:bg-theme hover:text-white transition duration-300 ease-in-out">
               Explore Now
-            </button>
+            </Link>
           </div>
         </div>
       </div>

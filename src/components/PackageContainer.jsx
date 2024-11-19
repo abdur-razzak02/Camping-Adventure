@@ -10,8 +10,8 @@ const PackageContainer = () => {
     <div>
       <Slider></Slider>
       <AboutCamp></AboutCamp>
-      <main className="pb-10 sm:pb-20 bg-slate-100" id="allPackages">
-        <section className="w-11/12 mx-auto sm:pt-10">
+      <main className=" bg-slate-100 py-10 lg:py-16" id="allPackages">
+        <section className="w-11/12 mx-auto">
           <div className="text-center space-y-3 mb-10">
             <h1 className="text-4xl font-bold font-play ">Our All Packages</h1>
             <p className="sm:w-2/3 px-5 sm:px-0 mx-auto text-gray-500">

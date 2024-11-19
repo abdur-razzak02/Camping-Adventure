@@ -10,7 +10,7 @@
     "Location": "Blue Ridge Mountains, USA",
     "Duration": "2 Days, 1 Night",
     "adventureLevel": "Intermediate",
-    "includedItems": ["Tent", "Sleeping Bag", "Guide", "Meals"],
+    "includedItems": ["Tent ", " Sleeping Bag ", " Guide ", " Meals"],
     "ecoFriendly_Features": ["Reusable Utensils", "No Plastic Policy"],
     "maxGroupSize": 12,
     "specialInstructions": ["Carry warm clothing", "Comfortable hiking shoes"]
