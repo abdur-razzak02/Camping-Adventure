@@ -1,15 +1,20 @@
 import logo from "../assets/logo.png";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { FaUser, FaUserPen, FaArrowRightFromBracket, FaTrash } from "react-icons/fa6";
+import {
+  FaUser,
+  FaUserPen,
+  FaArrowRightFromBracket,
+  FaTrash,
+} from "react-icons/fa6";
 import { IoSettingsSharp } from "react-icons/io5";
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const { user, setUser, logoutUser, deleteAccount } = useContext(AuthContext);
   const navigate = useNavigate();
   console.log(user?.photoURL);
-  
 
   const handleLogout = () => {
     logoutUser();
@@ -19,7 +24,7 @@ const Navbar = () => {
   const handleDeleteAccount = () => {
     deleteAccount().then(() => {
       setUser(null);
-      navigate('/')
+      navigate("/");
     });
   };
 
@@ -60,22 +65,22 @@ const Navbar = () => {
               <details>
                 <summary>More Adventure</summary>
                 <ul className="p-2 w-48 space-y-1">
-                  <li>
+                  <li onClick={()=>toast.error('Not available now')}>
                     <Link>Mountain Treks</Link>
                   </li>
-                  <li>
+                  <li onClick={()=>toast.error('Not available now')}>
                     <Link>Ocean Dives</Link>
                   </li>
-                  <li>
+                  <li onClick={()=>toast.error('Not available now')}>
                     <Link>Wildlife Safaris</Link>
                   </li>
-                  <li>
+                  <li onClick={()=>toast.error('Not available now')}>
                     <Link>Forest Expeditions</Link>
                   </li>
-                  <li>
+                  <li onClick={()=>toast.error('Not available now')}>
                     <Link>River Adventures</Link>
                   </li>
-                  <li>
+                  <li onClick={()=>toast.error('Not available now')}>
                     <Link>Desert Exploration</Link>
                   </li>
                 </ul>
@@ -108,22 +113,22 @@ const Navbar = () => {
             <details>
               <summary>More Adventure</summary>
               <ul className="p-2 w-48 space-y-1">
-                <li>
+                <li onClick={() => toast.error("Not available now")}>
                   <Link>Mountain Treks</Link>
                 </li>
-                <li>
+                <li onClick={() => toast.error("Not available now")}>
                   <Link>Ocean Dives</Link>
                 </li>
-                <li>
+                <li onClick={() => toast.error("Not available now")}>
                   <Link>Wildlife Safaris</Link>
                 </li>
-                <li>
+                <li onClick={() => toast.error("Not available now")}>
                   <Link>Forest Expeditions</Link>
                 </li>
-                <li>
+                <li onClick={() => toast.error("Not available now")}>
                   <Link>River Adventures</Link>
                 </li>
-                <li>
+                <li onClick={() => toast.error("Not available now")}>
                   <Link>Desert Exploration</Link>
                 </li>
               </ul>
@@ -145,7 +150,7 @@ const Navbar = () => {
               <img
                 alt="user"
                 src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png"
-                />
+              />
             </div>
           </div>
         ) : (

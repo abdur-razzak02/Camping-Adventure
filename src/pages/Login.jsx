@@ -38,9 +38,6 @@ const Login = () => {
   const handleForgotPassword = (e) => {
     const email = e.target.email.value;
     forgetPassword(email)
-
-    console.log(email);
-    
   }
 
   return (
