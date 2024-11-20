@@ -2,6 +2,8 @@ import { useLoaderData } from "react-router-dom";
 import Packages from "../pages/Packages";
 import AboutCamp from "./AboutCamp";
 import Slider from "./Slider";
+import Accordion from "./Accordion";
+import ContactUs from "./ContactUs";
 
 const PackageContainer = () => {
   const packages = useLoaderData();
@@ -32,6 +34,12 @@ const PackageContainer = () => {
           </div>
         </section>
       </main>
+      <div className="bg-slate-100">
+        <div className="grid sm:grid-cols-2 gap-10 xl:gap-20 w-11/12 mx-auto pb-10 xl:pb-16">
+          <Accordion></Accordion>
+          <ContactUs></ContactUs>
+        </div>
+      </div>
     </div>
   );
 };

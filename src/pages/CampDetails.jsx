@@ -1,4 +1,6 @@
+import { Helmet } from "react-helmet-async";
 import { useLoaderData, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const CampDetails = () => {
   const { ID } = useParams();
@@ -22,7 +24,8 @@ const CampDetails = () => {
   } = campPack;
 
   return (
-    <div className="min-h-[calc(100vh-308px)] bg-slate-100 py-10 lg:py-20 ">
+    <div className="min-h-[calc(100vh-308px)] bg-slate-100 py-10 lg:py-20">
+      <Helmet><title> {adventureTitle} | Camping Adventure</title></Helmet>
       <div className="w-11/12 mx-auto grid sm:grid-cols-2 gap-5 sm:gap-10">
         <div className="space-y-1 lg:space-y-0">
           <img src={Image} alt="camp image" className="rounded-lg mb-3" />
@@ -83,15 +86,21 @@ const CampDetails = () => {
           <p>
             Location: <b>{Location}</b>
           </p>
+          <div className="pt-5">
+            <a
+              href="https://meet.google.com/landing"
+              target="_blank"
+              className="px-5 py-2 border border-theme transition duration-500 hover:bg-theme hover:text-white rounded-lg w-40"
+            >
+              Talk with Expert
+            </a>
+          </div>
         </div>
       </div>
-      <div className="w-full text-center mt-10">
-        <a
-          href="https://meet.google.com/landing" target="_blank"
-          className="px-5 py-2 bg-theme text-white rounded-lg w-40"
-        >
-          Talk with Expert
-        </a>
+      <div className="pt-10 xl:pt-16 w-full text-center">
+        <button onClick={()=>toast.success('Your booking is confirmed...')} className="px-5 py-2 btn bg-orange-500 hover:bg-orange-400 text-white rounded-md w-48 transition duration-500">
+          Book Now
+        </button>
       </div>
     </div>
   );

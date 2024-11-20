@@ -9,6 +9,12 @@ const Footer = () => {
             Camping Adventure
           </h1>
           <p>Providing reliable camping services since 2017</p>
+          <div className="flex gap-2 *:w-5">
+            <img src="https://cdn-icons-png.flaticon.com/128/733/733547.png" alt="facebook icon" />
+            <img src="https://cdn-icons-png.flaticon.com/128/2111/2111463.png" alt="instagram icon" />
+            <img src="https://cdn-icons-png.flaticon.com/128/5968/5968830.png" alt="twiter icon" />
+            <img src="https://cdn-icons-png.flaticon.com/128/3536/3536661.png" alt="telegram icon" />
+          </div>
         </aside>
         <nav className="col-span-1 mb-3 sm:mb-0">
           <h6 className="text-base font-semibold text-gray-500 uppercase">Services</h6>

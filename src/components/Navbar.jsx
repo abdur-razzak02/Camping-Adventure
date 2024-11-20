@@ -1,9 +1,28 @@
 import logo from "../assets/logo.png";
-import { Link, NavLink } from "react-router-dom";
-import { FaUser, FaUserPen, FaArrowRightFromBracket } from "react-icons/fa6";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { FaUser, FaUserPen, FaArrowRightFromBracket, FaTrash } from "react-icons/fa6";
 import { IoSettingsSharp } from "react-icons/io5";
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Navbar = () => {
+  const { user, setUser, logoutUser, deleteAccount } = useContext(AuthContext);
+  const navigate = useNavigate();
+  console.log(user?.photoURL);
+  
+
+  const handleLogout = () => {
+    logoutUser();
+    setUser(null);
+  };
+
+  const handleDeleteAccount = () => {
+    deleteAccount().then(() => {
+      setUser(null);
+      navigate('/')
+    });
+  };
+
   return (
     <div className="navbar w-11/12 mx-auto p-0 ">
       <div className="navbar-start">
@@ -114,21 +133,30 @@ const Navbar = () => {
       </div>
 
       <div className="dropdown dropdown-end navbar-end flex ">
-        <Link to={'/login'} className="px-4 py-1 rounded mr-2 font-semibold bg-theme text-white">
-          Login
-        </Link>
-        <div
-          tabIndex={0}
-          role="button"
-          className="btn btn-ghost btn-circle avatar"
-        >
-          <div className="w-10 rounded-full">
-            <img
-              alt="Tailwind CSS Navbar component"
-              src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-            />
+        {user && <p>{user.email}</p>}
+        {/* {user && user?.photoURL ? <img src={user.photoURL} alt="" /> : ''} */}
+        {user ? (
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn btn-ghost btn-circle avatar"
+          >
+            <div className="w-10 rounded-full">
+              <img
+                alt="user"
+                src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png"
+                />
+            </div>
           </div>
-        </div>
+        ) : (
+          <Link
+            to={"/login"}
+            className="px-4 py-1 rounded font-semibold bg-theme text-white"
+          >
+            Login
+          </Link>
+        )}
+
         <ul
           tabIndex={0}
           className="menu menu-sm dropdown-content top-10 bg-base-100 rounded-lg space-y-1 z-[1] mt-3 w-44 p-2 shadow"
@@ -148,7 +176,12 @@ const Navbar = () => {
               <IoSettingsSharp /> Settings
             </a>
           </li>
-          <li className="text-red-600 ">
+          <li onClick={handleDeleteAccount}>
+            <a>
+              <FaTrash></FaTrash> Delete Account
+            </a>
+          </li>
+          <li onClick={handleLogout} className="text-red-600">
             <a>
               <FaArrowRightFromBracket /> Logout
             </a>

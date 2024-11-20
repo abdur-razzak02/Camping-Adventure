@@ -6,6 +6,7 @@ import Gallery from "../pages/Gallery";
 import CampDetails from "../pages/CampDetails";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/camp/:ID",
-        element: <CampDetails></CampDetails>,
+        element: <PrivateRoute><CampDetails></CampDetails></PrivateRoute>,
         loader: () => fetch("/campingPackagesData.json"),
       },
       {
@@ -34,11 +35,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <Login></Login>,
+    element: <Login></Login>
   },
   {
-    path: "/signup",
-    element: <SignUp></SignUp>,
+    path: "signup",
+    element: <SignUp></SignUp>
   },
   {
     path: "*",

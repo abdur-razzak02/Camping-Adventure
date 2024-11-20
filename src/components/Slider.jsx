@@ -34,8 +34,8 @@ const Slider = () => {
         <SwiperSlide className="bg-slide1">
           <div className="flex justify-start items-center h-full md:ml-20 lg:ml-40">
             <div data-aos="fade-right" className=" transition duration-1000"> 
-              <h1 className="text-3xl sm:text-5xl xl:text-8xl font-play font-bold ">Join the <br /> <span className="text-orange-500">Adventure </span></h1>
-              <h2 className="sm:text-xl mb-3 sm:mb-5 xl:mb-8">Explore. Discover. Create Memories</h2>
+              <h1 className="text-2xl sm:text-5xl xl:text-8xl font-play font-bold leading-tight">Join the <br /> <span className="text-orange-500"> Adventure </span></h1>
+              <h2 className="text-sm sm:text-xl mb-3 sm:mb-5 xl:mb-8">Explore. Discover. Create Memories</h2>
               <a href="#allPackages" className="bg-orange-500 py-2 rounded-md font-thin flex items-center gap-1 w-32 justify-center"> Discover <span className="text-xl"> <FiArrowUpRight></FiArrowUpRight> </span>
               </a>
             </div>
@@ -45,8 +45,8 @@ const Slider = () => {
         <SwiperSlide className="bg-slide2">
         <div className="flex justify-start items-center h-full md:ml-20 lg:ml-40">
             <div data-aos="fade-right" className=" transition duration-1000">
-              <h1 className="text-3xl sm:text-5xl xl:text-8xl font-play font-bold"> Embrace the <br /> <span className="text-orange-500"> Winter Wonderland </span></h1>
-              <h2 className="text-sm sm:text-xl mb-3 sm:mb-5 xl:mb-8">Stay Cozy, Adventure Boldly, and Savor the Magic of Snowy Escapes!</h2>
+              <h1 className="text-2xl sm:text-5xl xl:text-8xl font-play font-bold leading-tight"> Embrace the <br /> <span className="text-orange-500 text-xl sm:text-5xl xl:text-8xl"> Winter Wonderland </span></h1>
+              <h2 className="text-sm sm:text-xl mb-3 sm:mb-5 xl:mb-8">Stay Cozy, Adventure Boldly, and Savor Snowy Escapes!</h2>
               <a href="#allPackages" className="bg-orange-500 py-2 rounded-md font-thin flex items-center gap-1 w-32 justify-center"> Discover <span className="text-xl"> <FiArrowUpRight></FiArrowUpRight> </span>
               </a>
             </div>
@@ -56,7 +56,7 @@ const Slider = () => {
         <SwiperSlide className="bg-slide3">
         <div className="flex justify-start items-center h-full md:ml-20 lg:ml-40">
             <div data-aos="fade-right" className=" transition duration-1000">
-              <h1 className="text-3xl sm:text-5xl xl:text-8xl font-play font-bold ">Make Camping <br /> <span className="text-orange-500">More Fun </span></h1>
+              <h1 className="text-2xl sm:text-5xl xl:text-8xl font-play font-bold leading-tight">Make Camping <br /> <span className="text-orange-500">More Fun </span></h1>
               <h2 className="text-sm sm:text-xl mb-3 sm:mb-5 xl:mb-8">Gear Up, Explore More, and Create Lasting Memories!</h2>
               <a href="#allPackages" className="bg-orange-500 py-2 rounded-md font-thin flex items-center gap-1 w-32 justify-center"> Discover <span className="text-xl"> <FiArrowUpRight></FiArrowUpRight> </span>
               </a>
