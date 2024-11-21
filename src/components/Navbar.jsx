@@ -15,28 +15,32 @@ const Navbar = () => {
   const { user, setUser, logoutUser, deleteAccount } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  console.log(user);
-  
   const visitProfile = () => {
-    navigate('/profile')
-  }
+    navigate("/profile");
+  };
+  const updateProfile = () => {
+    navigate("/update-profile");
+  };
+  const userSetting = () => {
+    toast.error('Not available now');
+  };
 
   const handleLogout = () => {
     logoutUser();
     setUser(null);
-    toast.success('Logged out successfully')
+    toast.success("Logged out successfully");
   };
 
   const handleDeleteAccount = () => {
     deleteAccount().then(() => {
       setUser(null);
-      toast.error('Account deleted permanently')
+      toast.error("Account deleted permanently");
       navigate("/");
     });
   };
 
   return (
-    <div className="navbar w-11/12 mx-auto p-0 ">
+    <div className="navbar w-11/12 mx-auto p-0">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="mr-2 lg:hidden">
@@ -72,22 +76,22 @@ const Navbar = () => {
               <details>
                 <summary>More Adventure</summary>
                 <ul className="p-2 w-48 space-y-1">
-                  <li onClick={()=>toast.error('Not available now')}>
+                  <li onClick={() => toast.error("Not available now")}>
                     <Link>Mountain Treks</Link>
                   </li>
-                  <li onClick={()=>toast.error('Not available now')}>
+                  <li onClick={() => toast.error("Not available now")}>
                     <Link>Ocean Dives</Link>
                   </li>
-                  <li onClick={()=>toast.error('Not available now')}>
+                  <li onClick={() => toast.error("Not available now")}>
                     <Link>Wildlife Safaris</Link>
                   </li>
-                  <li onClick={()=>toast.error('Not available now')}>
+                  <li onClick={() => toast.error("Not available now")}>
                     <Link>Forest Expeditions</Link>
                   </li>
-                  <li onClick={()=>toast.error('Not available now')}>
+                  <li onClick={() => toast.error("Not available now")}>
                     <Link>River Adventures</Link>
                   </li>
-                  <li onClick={()=>toast.error('Not available now')}>
+                  <li onClick={() => toast.error("Not available now")}>
                     <Link>Desert Exploration</Link>
                   </li>
                 </ul>
@@ -145,27 +149,34 @@ const Navbar = () => {
       </div>
 
       <div className="dropdown dropdown-end navbar-end flex">
-        {user && <p>{user.email}</p>}
+        {user && (
+          <p className="tooltip  tooltip-bottom" data-tip={user.displayName}>
+            {user.email}
+          </p>
+        )}
         {user ? (
           <div
             tabIndex={0}
             role="button"
             className="btn btn-ghost btn-circle avatar"
           >
-            <div className="w-10 rounded-full ">
-              {
-                user.photoURL ? <img src={user.photoURL}/> : <img
-                alt="user"
-                src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png"
-              />
-              }
-              {/* <img
-                alt="user"
-                src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png"
-              /> */}
+            <div className="w-10 rounded-full border tooltip" data-tip="hello">
+              {user.photoURL ? (
+                <img
+                  src={user.photoURL}
+                  className="tooltip"
+                  data-tip={user.displayName}
+                />
+              ) : (
+                <img
+                  alt="user"
+                  src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png"
+                  className="tooltip"
+                  data-tip={user.displayName}
+                />
+              )}
             </div>
           </div>
-          
         ) : (
           <Link
             to={"/login"}
@@ -184,12 +195,12 @@ const Navbar = () => {
               <FaUser /> Profile
             </a>
           </li>
-          <li>
+          <li onClick={updateProfile}>
             <a>
               <FaUserPen /> Update Profile
             </a>
           </li>
-          <li>
+          <li onClick={userSetting}>
             <a>
               <IoSettingsSharp /> Settings
             </a>

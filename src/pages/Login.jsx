@@ -6,7 +6,7 @@ import { AuthContext } from "../provider/AuthProvider";
 import { toast } from "react-toastify";
 
 const Login = () => {
-  const { setUser, loginUser, googleLogin, forgetPassword } =
+  const { user, setUser, loginUser, googleLogin,updateUserProfile, forgetPassword } =
     useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -19,6 +19,10 @@ const Login = () => {
     googleLogin()
       .then((result) => {
         setUser(result);
+        updateUserProfile({
+          displayName: user.displayName,
+          photoURL: user.photoURL
+        })
         toast.success("Login out successfully");
         navigate(location.state ? location.state : "/");
       })

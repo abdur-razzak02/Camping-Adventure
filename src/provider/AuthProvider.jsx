@@ -49,13 +49,11 @@ const AuthProvider = ({ children }) => {
 
     // update profile
     const updateUserProfile = (userData) => {
-        console.log(userData);
-        
         setLoading(true)
         return updateProfile(auth.currentUser, userData)
     }
     
-
+// npm build, firebase deploy
     
    useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
@@ -77,6 +75,7 @@ const AuthProvider = ({ children }) => {
         logoutUser,
         updateUserProfile,
         loading,
+        setLoading,
         forgetPassword,
         deleteAccount,
     }

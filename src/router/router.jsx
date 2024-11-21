@@ -8,6 +8,7 @@ import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import Profile from "../pages/Profile";
+import UpdateProfile from "../pages/UpdateProfile";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/camp/:ID",
-        element: <PrivateRoute><CampDetails></CampDetails></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <CampDetails></CampDetails>
+          </PrivateRoute>
+        ),
         loader: () => fetch("/campingPackagesData.json"),
       },
       {
@@ -30,21 +35,37 @@ const router = createBrowserRouter([
       },
       {
         path: "gallery",
-        element: <PrivateRoute><Gallery></Gallery></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <Gallery></Gallery>
+          </PrivateRoute>
+        ),
       },
     ],
   },
   {
     path: "login",
-    element: <Login></Login>
+    element: <Login></Login>,
   },
   {
     path: "signup",
-    element: <SignUp></SignUp>
+    element: <SignUp></SignUp>,
   },
   {
-    path: "profile",
-    element: <Profile></Profile>
+    path: "/profile",
+    element: (
+      <PrivateRoute>
+        <Profile></Profile>
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: "update-profile",
+    element: (
+      <PrivateRoute>
+        <UpdateProfile></UpdateProfile>
+      </PrivateRoute>
+    ),
   },
   {
     path: "*",

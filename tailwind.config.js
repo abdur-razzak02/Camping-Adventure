@@ -17,6 +17,7 @@ export default {
         slide1: "url('https://i.ibb.co.com/rG4K28v/slide-1.jpg')",
         slide2: "url('https://i.ibb.co.com/Ptb9PFX/slide-2.jpg')",
         slide3: "url('https://i.ibb.co.com/D4MgFjP/slide-3.jpg')",
+        profileBg: "url('https://i.ibb.co.com/kqNXqXb/digital-technology-background.jpg')"
       },
     },
   },
