@@ -1,9 +1,28 @@
+import { useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 
 const CampDetails = () => {
   const { ID } = useParams();
   const data = useLoaderData();
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleBookNow = () => {
+    const currentTime = new Date();
+    const currentHour = currentTime.getHours();
+
+    // Check if current time is between 10:00 AM and 8:00 PM
+    if (currentHour >= 10 && currentHour < 20) {
+      window.open("https://meet.google.com/", "_blank");
+    } else {
+      setIsModalOpen(true);
+    }
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   const campPack = data.find((pack) => pack.ID == ID);
   const {
@@ -85,20 +104,65 @@ const CampDetails = () => {
             Location: <b>{Location}</b>
           </p>
           <div className="pt-5">
-            <a
-              href="https://meet.google.com/landing"
-              target="_blank"
+            <button onClick={handleBookNow}
               className="px-5 py-2 border border-theme transition duration-500 hover:bg-theme hover:text-white rounded-lg w-40"
             >
               Talk with Expert
-            </a>
+            </button>
           </div>
         </div>
+
       </div>
       <div className="pt-10 xl:pt-16 w-full text-center">
-        <button onClick={()=>toast.success('Your booking is confirmed...')} className="px-5 py-2 btn bg-orange-500 hover:bg-orange-400 text-white rounded-md w-48 transition duration-500">
+        <button onClick={handleBookNow} className="px-5 py-2 btn bg-orange-500 hover:bg-orange-400 text-white rounded-md w-48 transition duration-500">
           Book Now
         </button>
+
+        {/* Modal */}
+      {isModalOpen && (
+        <div className="modal modal-open">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg">Consultation Hours</h3>
+            <p className="py-4">
+              Consultation is available only <strong>10:00 AM</strong> to <strong>8:00 PM</strong>. 
+              Please try again during these hours.
+            </p>
+            <div className="modal-action">
+              <button
+                onClick={closeModal}
+                className="btn bg-theme hover:bg-success text-white"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+        )}
+        
+
+         {/* Book Now 222 Button */}
+      {/* <button onClick={openBookingModal} className="btn btn-secondary">
+        Book Now 222
+      </button> */}
+
+      {/* Consultation Time Modal */}
+      {/* {isTimeModalOpen && (
+        <div className="modal modal-open">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg">Consultation Hours</h3>
+            <p className="py-4">
+              Consultation is available only between <strong>10:00 AM</strong> and <strong>8:00 PM</strong>. 
+              Please try again during these hours.
+            </p>
+            <div className="modal-action">
+              <button onClick={closeTimeModal} className="btn btn-secondary">
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+        )} */}
+        
       </div>
     </div>
   );

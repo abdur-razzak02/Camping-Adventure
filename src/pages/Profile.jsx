@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
+import { FaArrowCircleLeft } from "react-icons/fa";
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
@@ -12,14 +13,14 @@ const Profile = () => {
       <Navbar></Navbar>
       <div className="flex items-center justify-center h-[calc(100vh-64px)] bg-cover bg-center bg-profileBg">
         <div className="bg-white bg-opacity-90 p-6 rounded-lg shadow-lg text-center mx-auto w-11/12 sm:w-3/4 xl:w-1/4">
-          <Link to={'/'} className="text-sm flex"><h1 className="bg-black text-white p-2 inline rounded-md">Back</h1></Link>
+          <Link to={'/'}><FaArrowCircleLeft className="text-xl"/></Link>
           <img
             src={user?.photoURL}
             alt="Profile"
             className="w-24 h-24 rounded-full mx-auto mb-4 border-2"
           />
           <h2 className="text-lg font-bold text-gray-800 font-play">
-            Name: {user?.displayName}
+            Welcome {user?.displayName}
           </h2>
           <p className="text-sm text-gray-600">Email: {user?.email}</p>
           <span
