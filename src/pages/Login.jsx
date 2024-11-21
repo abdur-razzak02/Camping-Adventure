@@ -1,21 +1,26 @@
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import Navbar from "../components/Navbar";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
-import { Helmet } from "react-helmet-async";
+import { toast } from "react-toastify";
 
 const Login = () => {
-  const { setUser, loginUser, googleLogin, forgetPassword } = useContext(AuthContext);
+  const { setUser, loginUser, googleLogin, forgetPassword } =
+    useContext(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [success, setSuccess] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+  const emailRef = useRef();
 
   const handleGoogleLogin = () => {
     googleLogin()
       .then((result) => {
         setUser(result);
-        navigate("/");
+        toast.success("Login out successfully");
+        navigate(location.state ? location.state : "/");
       })
       .catch((error) => setErrorMessage(error.code));
   };
@@ -27,7 +32,8 @@ const Login = () => {
     loginUser(email, password)
       .then((result) => {
         setUser(result);
-        navigate("/");
+        toast.success("Login out successfully");
+        navigate(location.state ? location.state : "/");
         e.target.reset();
       })
       .catch((error) => {
@@ -35,16 +41,27 @@ const Login = () => {
       });
   };
 
-  const handleForgotPassword = (e) => {
-    const email = e.target.email.value;
-    forgetPassword(email)
-  }
+  const handleForgotPassword = () => {
+    const email = emailRef.current.value;
+    if (!email) {
+      setErrorMessage("Enter your email address");
+    } else {
+      forgetPassword(email)
+        .then(() => {
+          setErrorMessage("");
+          toast.success("Check your email for reset password");
+          setSuccess("Check your email for reset password");
+        })
+        .catch((error) => {
+          setErrorMessage(error.code);
+        });
+    }
+  };
 
   return (
     <div>
       <Navbar></Navbar>
       <div className="text-5xl flex items-center justify-center bg-slate-100 min-h-[calc(100vh-64px)] py-10 px-5">
-      <Helmet><title>Login | Camping Adventure</title></Helmet>
         <div className="card w-96 bg-base-100 shadow-xl p-6">
           <h2 className="text-2xl font-bold text-center mb-4">Login</h2>
           <form onSubmit={handleLogin}>
@@ -55,6 +72,7 @@ const Login = () => {
               <input
                 name="email"
                 type="email"
+                ref={emailRef}
                 placeholder="Enter your email"
                 className="input input-bordered"
                 required
@@ -79,7 +97,10 @@ const Login = () => {
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </span>
               <label className="label">
-                <a onClick={handleForgotPassword} className="label-text-alt link link-hover">
+                <a
+                  onClick={handleForgotPassword}
+                  className="label-text-alt link link-hover"
+                >
                   Forgot password?
                 </a>
               </label>
@@ -89,6 +110,9 @@ const Login = () => {
               <p className="text-red-500 text-base text-center">
                 {errorMessage}
               </p>
+            )}
+            {success && (
+              <p className="text-green-500 text-base text-center">{success}</p>
             )}
 
             <button

@@ -1,4 +1,3 @@
-import { Helmet } from "react-helmet-async";
 import { useLoaderData, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -25,7 +24,6 @@ const CampDetails = () => {
 
   return (
     <div className="min-h-[calc(100vh-308px)] bg-slate-100 py-10 lg:py-20">
-      <Helmet><title> {adventureTitle} | Camping Adventure</title></Helmet>
       <div className="w-11/12 mx-auto grid sm:grid-cols-2 gap-5 sm:gap-10">
         <div className="space-y-1 lg:space-y-0">
           <img src={Image} alt="camp image" className="rounded-lg mb-3" />

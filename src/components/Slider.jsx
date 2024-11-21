@@ -15,7 +15,7 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 const Slider = () => {
   return (
-    <div className="h-[40vh] sm:h-[45vh] md:h-[50vh] lg:h-[70vh]">
+    <div className="h-[35vh] sm:h-[45vh] md:h-[50vh] lg:h-[70vh]">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}

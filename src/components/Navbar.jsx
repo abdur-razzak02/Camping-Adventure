@@ -14,16 +14,23 @@ import { toast } from "react-toastify";
 const Navbar = () => {
   const { user, setUser, logoutUser, deleteAccount } = useContext(AuthContext);
   const navigate = useNavigate();
-  console.log(user?.photoURL);
+
+  console.log(user);
+  
+  const visitProfile = () => {
+    navigate('/profile')
+  }
 
   const handleLogout = () => {
     logoutUser();
     setUser(null);
+    toast.success('Logged out successfully')
   };
 
   const handleDeleteAccount = () => {
     deleteAccount().then(() => {
       setUser(null);
+      toast.error('Account deleted permanently')
       navigate("/");
     });
   };
@@ -137,22 +144,28 @@ const Navbar = () => {
         </ul>
       </div>
 
-      <div className="dropdown dropdown-end navbar-end flex ">
+      <div className="dropdown dropdown-end navbar-end flex">
         {user && <p>{user.email}</p>}
-        {/* {user && user?.photoURL ? <img src={user.photoURL} alt="" /> : ''} */}
         {user ? (
           <div
             tabIndex={0}
             role="button"
             className="btn btn-ghost btn-circle avatar"
           >
-            <div className="w-10 rounded-full">
-              <img
+            <div className="w-10 rounded-full ">
+              {
+                user.photoURL ? <img src={user.photoURL}/> : <img
                 alt="user"
                 src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png"
               />
+              }
+              {/* <img
+                alt="user"
+                src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png"
+              /> */}
             </div>
           </div>
+          
         ) : (
           <Link
             to={"/login"}
@@ -166,7 +179,7 @@ const Navbar = () => {
           tabIndex={0}
           className="menu menu-sm dropdown-content top-10 bg-base-100 rounded-lg space-y-1 z-[1] mt-3 w-44 p-2 shadow"
         >
-          <li>
+          <li onClick={visitProfile}>
             <a>
               <FaUser /> Profile
             </a>

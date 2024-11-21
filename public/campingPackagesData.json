@@ -32,26 +32,6 @@
     "specialInstructions": ["Sunscreen", "Hydration packs", "Loose clothing"]
   },
   {
-    "adventureTitle": "Rainforest Exploration",
-    "Image": "https://i.ibb.co.com/7XgdZZr/Rainforest-Exploration.jpg",
-    "ID": "A003",
-    "categoryName": "Hiking",
-    "shortDescription": "Discover the mysteries of the rainforest with expert guides.",
-    "adventureCost": 200,
-    "bookingAvailability": "Yes",
-    "Location": "Amazon Rainforest, Brazil",
-    "Duration": "4 Days, 3 Nights",
-    "adventureLevel": "Advanced",
-    "includedItems": ["Guide", "Meals", "First Aid Kit"],
-    "ecoFriendly_Features": ["Biodegradable Supplies", "Low-Impact Trails"],
-    "maxGroupSize": 8,
-    "specialInstructions": [
-      "Insect repellent",
-      "Waterproof gear",
-      "Comfortable shoes"
-    ]
-  },
-  {
     "adventureTitle": "Snowy Peaks Camping",
     "Image": "https://i.ibb.co.com/ZX9Zhx6/Snowy-Peaks-Camping.jpg",
     "ID": "A004",
@@ -120,22 +100,6 @@
     "specialInstructions": ["Sturdy boots", "Knife", "Notebook"]
   },
   {
-    "adventureTitle": "Starlit Cliffside Camping",
-    "Image": "https://i.ibb.co.com/p1VmPcQ/Starlit-Cliffside-Camping.jpg",
-    "ID": "A008",
-    "categoryName": "Camping",
-    "shortDescription": "Sleep under the stars with breathtaking cliffside views.",
-    "adventureCost": 140,
-    "bookingAvailability": "Yes",
-    "Location": "Big Sur, California, USA",
-    "Duration": "2 Days, 1 Night",
-    "adventureLevel": "Intermediate",
-    "includedItems": ["Tent", "Meals", "Guide"],
-    "ecoFriendly_Features": ["Reusable Supplies", "Eco-Lighting"],
-    "maxGroupSize": 10,
-    "specialInstructions": ["Carry binoculars", "Pack warm layers"]
-  },
-  {
     "adventureTitle": "Jungle Waterfall Adventure",
     "Image": "https://i.ibb.co.com/3vHPjjd/Jungle-Waterfall-Adventure.jpg",
     "ID": "A009",
@@ -150,25 +114,6 @@
     "ecoFriendly_Features": ["Plastic-Free Zone", "Local Food Sources"],
     "maxGroupSize": 12,
     "specialInstructions": ["Swimwear", "Waterproof camera"]
-  },
-  {
-    "adventureTitle": "Volcanic Lava Cave Expedition",
-    "Image": "https://i.ibb.co.com/z5wwRXj/Volcanic-Lava-Cave-Expedition.jpg",
-    "ID": "A010",
-    "categoryName": "Exploration",
-    "shortDescription": "Explore ancient lava caves on an exhilarating adventure.",
-    "adventureCost": 210,
-    "bookingAvailability": "Yes",
-    "Location": "Reykjanes Peninsula, Iceland",
-    "Duration": "1 Day",
-    "adventureLevel": "Intermediate",
-    "includedItems": ["Helmet", "Headlamp", "Guide"],
-    "ecoFriendly_Features": [
-      "Environmentally Guided Tours",
-      "Leave No Trace Policy"
-    ],
-    "maxGroupSize": 8,
-    "specialInstructions": ["Wear sturdy boots", "Bring gloves"]
   },
   {
     "adventureTitle": "Lake Paddle & Camp",

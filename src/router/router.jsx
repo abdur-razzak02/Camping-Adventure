@@ -7,6 +7,7 @@ import CampDetails from "../pages/CampDetails";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import PrivateRoute from "./PrivateRoute";
+import Profile from "../pages/Profile";
 
 const router = createBrowserRouter([
   {
@@ -29,17 +30,21 @@ const router = createBrowserRouter([
       },
       {
         path: "gallery",
-        element: <Gallery></Gallery>,
+        element: <PrivateRoute><Gallery></Gallery></PrivateRoute>,
       },
     ],
   },
   {
-    path: "/login",
+    path: "login",
     element: <Login></Login>
   },
   {
     path: "signup",
     element: <SignUp></SignUp>
+  },
+  {
+    path: "profile",
+    element: <Profile></Profile>
   },
   {
     path: "*",

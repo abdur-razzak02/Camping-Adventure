@@ -1,12 +1,14 @@
 import { useContext, useState } from "react";
 import Navbar from "../components/Navbar";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../provider/AuthProvider";
-import { useNavigate } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
-  const { setUser, createUser } = useContext(AuthContext);
+  const { setUser, createUser, updateUserProfile } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -15,13 +17,26 @@ const SignUp = () => {
     const email = e.target.email.value;
     const photo = e.target.photo.value;
     const password = e.target.password.value;
-    console.log(name, email, password, photo);
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
+    if (!passwordRegex.test(password)) {
+      return setErrorMessage("At least one number, uppercase and lowercase");
+    }
 
     createUser(email, password)
       .then((result) => {
         setUser(result);
+        updateUserProfile({
+          displayName: name,
+          photoURL: photo,
+        })
+          .then(() => {
+            navigate("/");
+          })
+          .catch((error) => {
+            setErrorMessage(error);
+          });
+        toast.success("Account Created");
         e.target.reset();
-        navigate("/");
       })
       .catch((error) => {
         setErrorMessage(error.code);
@@ -31,9 +46,8 @@ const SignUp = () => {
   return (
     <div>
       <Navbar></Navbar>
-      <div className="flex justify-center items-center min-h-[calc(100vh-64px)] bg-slate-100 p-10">
-      <Helmet><title>Signup | Camping Adventure</title></Helmet>
-        <div className="w-full max-w-md p-8 space-y-3 bg-white rounded-lg shadow-md">
+      <div className="flex justify-center items-center min-h-[calc(100vh-64px)] bg-slate-100 px-5 py-10">
+        <div className="w-96 p-6 space-y-3 bg-white rounded-2xl shadow-xl">
           <h2 className="text-2xl font-bold text-center text-gray-800">
             Create an Account
           </h2>
@@ -81,17 +95,23 @@ const SignUp = () => {
             </div>
 
             {/* Password Field */}
-            <div className="form-control">
+            <div className="form-control relative">
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="password"
                 name="password"
-                placeholder="Your Password"
-                className="input input-bordered w-full"
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter your password"
+                className="input input-bordered"
                 required
               />
+              <span
+                className="absolute right-3 top-12 text-2xl cursor-pointer text-gray-400"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </span>
             </div>
 
             {/* Register Button */}
@@ -104,6 +124,15 @@ const SignUp = () => {
               <p className="text-red-500 text-center">{errorMessage}</p>
             )}
           </form>
+
+          <div className="text-center mt-4">
+            <p className="text-sm">
+              Already have an account?
+              <Link to={"/login"} className="text-primary link link-hover">
+                Login
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
     </div>
