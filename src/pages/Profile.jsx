@@ -6,14 +6,15 @@ import { FaArrowCircleLeft } from "react-icons/fa";
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
-  console.log(user.displayName);
 
   return (
     <div>
       <Navbar></Navbar>
       <div className="flex items-center justify-center h-[calc(100vh-64px)] bg-cover bg-center bg-profileBg">
-        <div className="bg-white bg-opacity-90 p-6 rounded-lg shadow-lg text-center mx-auto w-11/12 sm:w-3/4 xl:w-1/4">
-          <Link to={'/'}><FaArrowCircleLeft className="text-xl"/></Link>
+        <div className="bg-white bg-opacity-90 p-6 rounded-lg shadow-lg text-center mx-auto w-11/12 sm:w-3/4 xl:w-1/4 z-50">
+          <Link to={"/"}>
+            <FaArrowCircleLeft className="text-xl" />
+          </Link>
           <img
             src={user?.photoURL}
             alt="Profile"
@@ -39,7 +40,10 @@ const Profile = () => {
             backend development, focusing on creating seamless user experiences.
           </p>
           <div className="mt-5">
-            <Link to={'/update-profile'} className="py-2 px-5 rounded-md bg-gray-200 hover:bg-slate-300 transi duration-500">
+            <Link
+              to={"/update-profile"}
+              className="py-2 px-5 rounded-md bg-gray-200 hover:bg-slate-300 transi duration-500"
+            >
               Update Profile
             </Link>
           </div>

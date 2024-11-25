@@ -8,7 +8,7 @@ const Packages = ({ allPackages }) => {
   return (
     <div
       data-aos="fade-up"
-      data-aos-duration="500"
+      data-aos-duration="700"
       data-aos-anchor-placement="top-bottom"
     >
       <div className="card bg-base-100 rounded-xl h-full">

@@ -9,6 +9,7 @@ import SignUp from "../pages/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import Profile from "../pages/Profile";
 import UpdateProfile from "../pages/UpdateProfile";
+import ErrorPage from "../pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
@@ -52,7 +53,7 @@ const router = createBrowserRouter([
     element: <SignUp></SignUp>,
   },
   {
-    path: "/profile",
+    path: "profile",
     element: (
       <PrivateRoute>
         <Profile></Profile>
@@ -69,7 +70,7 @@ const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <h1>Error</h1>,
+    errorElement: <ErrorPage></ErrorPage>,
   },
 ]);
 

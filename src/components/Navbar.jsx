@@ -7,12 +7,13 @@ import {
   FaTrash,
 } from "react-icons/fa6";
 import { IoSettingsSharp } from "react-icons/io5";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { toast } from "react-toastify";
 
 const Navbar = () => {
   const { user, setUser, logoutUser, deleteAccount } = useContext(AuthContext);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
 
   const visitProfile = () => {
@@ -32,11 +33,13 @@ const Navbar = () => {
   };
 
   const handleDeleteAccount = () => {
-    deleteAccount().then(() => {
-      setUser(null);
-      toast.error("Account deleted permanently");
-      navigate("/");
-    });
+    deleteAccount()
+      .then(() => {
+          setUser(null);
+          toast.error("Account deleted");
+          navigate("/");
+        });
+    setIsModalOpen(false);
   };
 
   return (
@@ -149,30 +152,22 @@ const Navbar = () => {
       </div>
 
       <div className="dropdown dropdown-end navbar-end flex">
-        {user && (
-          <p className="tooltip  tooltip-bottom" data-tip={user.displayName}>
-            {user.email}
-          </p>
-        )}
         {user ? (
           <div
             tabIndex={0}
             role="button"
-            className="btn btn-ghost btn-circle avatar"
+            data-tip={user.displayName}
+            className="btn btn-ghost btn-circle avatar tooltip tooltip-left"
           >
-            <div className="w-10 rounded-full border tooltip" data-tip="hello">
+            <div className="rounded-full border">
               {user.photoURL ? (
                 <img
                   src={user.photoURL}
-                  className="tooltip"
-                  data-tip={user.displayName}
                 />
               ) : (
                 <img
                   alt="user"
                   src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png"
-                  className="tooltip"
-                  data-tip={user.displayName}
                 />
               )}
             </div>
@@ -205,7 +200,7 @@ const Navbar = () => {
               <IoSettingsSharp /> Settings
             </a>
           </li>
-          <li onClick={handleDeleteAccount}>
+          <li onClick={() => setIsModalOpen(true)}>
             <a>
               <FaTrash></FaTrash> Delete Account
             </a>
@@ -216,6 +211,38 @@ const Navbar = () => {
             </a>
           </li>
         </ul>
+
+
+
+        {/* Modal */}
+      {isModalOpen && (
+        <div className="modal modal-open">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg">Confirm Deletion</h3>
+            <p className="py-4">
+              Are you sure you want to delete your account? This action cannot be undone.
+            </p>
+            <div className="modal-action">
+              {/* Confirm Delete Button */}
+              <button
+                className="btn btn-error"
+                onClick={handleDeleteAccount}
+              >
+                Confirm Delete
+              </button>
+              {/* Cancel Button */}
+              <button
+                className="btn"
+                onClick={() => setIsModalOpen(false)}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+
       </div>
     </div>
   );

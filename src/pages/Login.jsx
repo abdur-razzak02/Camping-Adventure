@@ -18,13 +18,13 @@ const Login = () => {
   const handleGoogleLogin = () => {
     googleLogin()
       .then((result) => {
-        setUser(result);
+        navigate(location.state ? location.state : "/");
         updateUserProfile({
           displayName: user.displayName,
           photoURL: user.photoURL
         })
-        toast.success("Login out successfully");
-        navigate(location.state ? location.state : "/");
+        setUser(result);
+        toast.success("Login successfully");
       })
       .catch((error) => setErrorMessage(error.code));
   };
@@ -35,9 +35,9 @@ const Login = () => {
     const password = e.target.password.value;
     loginUser(email, password)
       .then((result) => {
-        setUser(result);
-        toast.success("Login out successfully");
         navigate(location.state ? location.state : "/");
+        setUser(result);
+        toast.success("Login successfully");
         e.target.reset();
       })
       .catch((error) => {
